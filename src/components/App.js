@@ -37,7 +37,7 @@ function reducer(state, action) {
         ...state,
         answer: action.payload,
         points:
-          action.pauload === question.correctOption
+          action.payload === question.correctOption
             ? state.points + question.points
             : state.points,
       };
@@ -55,7 +55,7 @@ export default function App() {
   );
 
   const numQuestions = questions?.length;
-  const maxPossiblePoints = questions.reduce(
+  const maxPossiblePoints = questions?.reduce(
     (prev, cur) => prev + cur.points,
     0
   );
@@ -83,6 +83,7 @@ export default function App() {
               numQuestions={numQuestions}
               points={points}
               maxPossiblePoints={maxPossiblePoints}
+              answer={answer}
             />
             <Question
               question={questions[index]}
